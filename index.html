@@ -7,27 +7,26 @@
       	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       	<script type="text/javascript" src="js/materialize.min.js"></script>
+      	<script type="text/javascript" src="js/moment.js"></script>
+
 	    <script>
 	      window.onload = function(){
 	        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
 	        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
-	        console.log(geemails.sort(function(a,b){return a.date < b.date;}));
-	        window.sortedMail = geemails.sort(function(a,b){return a.date < b.date;});
-	        console.log(sortedMail);
+	        var sortedMail = geemails.sort(function(a,b){return a.date < b.date;});
+
 	        for (var i = 0; i < sortedMail.length; i++) {
 	        	$("#emailList").append(
 	        		'<li>\
 				      	<div class="row collapsible-header">\
-				      		<!-- <i class="material-icons">filter_drama</i> -->\
-				      		<span class="col s2">Sender</span>\
-				      		<span class="col s9">Subject</span>\
-				      		<span class="col s1">9:45 PM</span>\
+				      		<span class="col s2">' + sortedMail[i].sender + '</span>\
+				      		<span class="col s8">' + sortedMail[i].subject + '</span>\
+				      		<span class="col s2">' + moment(sortedMail[i].date).format("MM/DD/YY hh:mm A") + '</span>\
 				  		</div>\
-				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>\
+				      <div class="collapsible-body"><span>' + sortedMail[i].body + '</span></div>\
 				    </li>');
 	        };
-	        
 	      };
 	    </script>
 	</head>
@@ -38,16 +37,8 @@
 		<section id="emails">
 			<div class="content">
 				<ul id="emailList" class="collapsible popout" data-collapsible="accordion">
-				    <li>
-				      	<div class="row collapsible-header">
-				      		<!-- <i class="material-icons">filter_drama</i> -->
-				      		<span class="col s2">Sender</span>
-				      		<span class="col s9">Subject</span>
-				      		<span class="col s1">9:45 PM</span>
-
-				  		</div>
-				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				  </ul>
+				    
+				</ul>
 			</div>
 		</section>
 		<!-- <div class="container" id="main">
