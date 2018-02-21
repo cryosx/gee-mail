@@ -2,6 +2,10 @@
 	margin-bottom: 0px;
 }
 
+#emailList > li.active {
+	margin: 10px;
+}
+
 #inboxCount {
 	padding: 10px;
 	font-size: 2rem;

@@ -8,45 +8,31 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       	<script type="text/javascript" src="js/materialize.min.js"></script>
       	<script type="text/javascript" src="js/moment.js"></script>
+      	<script type="text/javascript" src="js/vue.min.js"></script>
 
 	    <script>
 	      window.onload = function(){
 	        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
 	        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
-	        var sortedMail = geemails.sort(function(a,b){return a.date < b.date;});
+	        var sortedMail = geemails.sort(function(a,b){return a.date > b.date;});
 
-	        for (var i = 0; i < sortedMail.length; i++) {
-	        	$("#emailList").append(
-	        		'<li>\
-				      	<div class="row collapsible-header">\
-				      		<span class="col s2">' + sortedMail[i].sender + '</span>\
-				      		<span class="col s8">' + sortedMail[i].subject + '</span>\
-				      		<span class="col s2">' + moment(sortedMail[i].date).format("MM/DD/YY hh:mm A") + '</span>\
-				  		</div>\
-				      <div class="collapsible-body"><span>' + sortedMail[i].body + '</span></div>\
-				    </li>');
-	        };
 	        $("#inboxCount").append(sortedMail.length);
 
 
 	        setInterval(function(){ 
-	        	var newMessage = getNewMessage();
-	       		sortedMail.push(getNewMessage);
-	        	$("#emailList").prepend(
-	        		'<li>\
-				      	<div class="row collapsible-header">\
-				      		<span class="col s2">' + newMessage.sender + '</span>\
-				      		<span class="col s8">' + newMessage.subject + '</span>\
-				      		<span class="col s2">' + moment(newMessage.date).format("MM/DD/YY hh:mm A") + '</span>\
-				  		</div>\
-				      <div class="collapsible-body"><span>' + newMessage.body + '</span></div>\
-				    </li>');
-	        	$("#inboxCount").html(sortedMail.length);
-
+	       		sortedMail.push(getNewMessage());
+	       		$("#inboxCount").html(sortedMail.length);
 	        }, 8000);
 	        // setInterval(function(){ console.log(sortedMail.length); }, 3000);
 
+	        var emailList = new Vue({
+			  el: '#emailList',
+			  data: {
+			    items: sortedMail
+			  }
+			});
+			$('.collapsible').collapsible();
 
 	      };
 	    </script>
@@ -67,7 +53,14 @@
 		<section id="emails">
 			<div class="content">
 				<ul id="emailList" class="collapsible popout" data-collapsible="accordion">
-				    
+				  <li v-for="item in items.slice().reverse()">
+				    <div class="row collapsible-header">
+				      		<span class="col s2"> {{item.sender}} </span>
+				      		<span class="col s8"> {{item.subject}} </span>
+				      		<span class="col s2"> {{moment(item.date).format("MM/DD/YY hh:mm A")}} </span>
+				  		</div>
+				     <div class="collapsible-body"><span> {{item.body}} </span></div>
+				  </li>
 				</ul>
 			</div>
 		</section>
