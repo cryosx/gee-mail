@@ -27,12 +27,22 @@
 				      <div class="collapsible-body"><span>' + sortedMail[i].body + '</span></div>\
 				    </li>');
 	        };
+	        $("#inboxCount").append(geemails.length + "");
 	      };
 	    </script>
 	</head>
 	<body>
 		<header>
-			<h1>GeeMail</h1>
+			<div class="row valign-wrapper">
+				<span class="col s10">
+					<h1>GeeMail</h1>
+				</span>
+				<span class="col s2">
+					<span id="inboxCount">
+						
+					</span>
+				</span>
+			</div>
 		</header>
 		<section id="emails">
 			<div class="content">
