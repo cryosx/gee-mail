@@ -27,7 +27,27 @@
 				      <div class="collapsible-body"><span>' + sortedMail[i].body + '</span></div>\
 				    </li>');
 	        };
-	        $("#inboxCount").append(geemails.length + "");
+	        $("#inboxCount").append(sortedMail.length);
+
+
+	        setInterval(function(){ 
+	        	var newMessage = getNewMessage();
+	       		sortedMail.push(getNewMessage);
+	        	$("#emailList").prepend(
+	        		'<li>\
+				      	<div class="row collapsible-header">\
+				      		<span class="col s2">' + newMessage.sender + '</span>\
+				      		<span class="col s8">' + newMessage.subject + '</span>\
+				      		<span class="col s2">' + moment(newMessage.date).format("MM/DD/YY hh:mm A") + '</span>\
+				  		</div>\
+				      <div class="collapsible-body"><span>' + newMessage.body + '</span></div>\
+				    </li>');
+	        	$("#inboxCount").html(sortedMail.length);
+
+	        }, 8000);
+	        // setInterval(function(){ console.log(sortedMail.length); }, 3000);
+
+
 	      };
 	    </script>
 	</head>
