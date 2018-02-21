@@ -2,17 +2,44 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
-    <script>
-      window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
-    </script>
+      	
+      	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      	<script type="text/javascript" src="js/materialize.min.js"></script>
+	    <script>
+	      window.onload = function(){
+	        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
+	        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+	        
+	      };
+	    </script>
 	</head>
 	<body>
-		<div class="container" id="main">
+		<header>
+			<h1>GeeMail</h1>
+		</header>
+		<section>
+			<div class="content">
+				<ul class="collapsible popout" data-collapsible="accordion">
+				    <li>
+				      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				    </li>
+				    <li>
+				      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				    </li>
+				    <li>
+				      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+				    </li>
+				  </ul>
+			</div>
+		</section>
+		<!-- <div class="container" id="main">
 			Build Me!
-		</div>
+		</div> -->
+		
 	</body>
 </html>
