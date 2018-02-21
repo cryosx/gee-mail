@@ -11,6 +11,22 @@
 	      window.onload = function(){
 	        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
 	        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+
+	        console.log(geemails.sort(function(a,b){return a.date < b.date;}));
+	        window.sortedMail = geemails.sort(function(a,b){return a.date < b.date;});
+	        console.log(sortedMail);
+	        for (var i = 0; i < sortedMail.length; i++) {
+	        	$("#emailList").append(
+	        		'<li>\
+				      	<div class="row collapsible-header">\
+				      		<!-- <i class="material-icons">filter_drama</i> -->\
+				      		<span class="col s2">Sender</span>\
+				      		<span class="col s9">Subject</span>\
+				      		<span class="col s1">9:45 PM</span>\
+				  		</div>\
+				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>\
+				    </li>');
+	        };
 	        
 	      };
 	    </script>
@@ -19,21 +35,18 @@
 		<header>
 			<h1>GeeMail</h1>
 		</header>
-		<section>
+		<section id="emails">
 			<div class="content">
-				<ul class="collapsible popout" data-collapsible="accordion">
+				<ul id="emailList" class="collapsible popout" data-collapsible="accordion">
 				    <li>
-				      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+				      	<div class="row collapsible-header">
+				      		<!-- <i class="material-icons">filter_drama</i> -->
+				      		<span class="col s2">Sender</span>
+				      		<span class="col s9">Subject</span>
+				      		<span class="col s1">9:45 PM</span>
+
+				  		</div>
 				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				    </li>
-				    <li>
-				      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				    </li>
-				    <li>
-				      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-				      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				    </li>
 				  </ul>
 			</div>
 		</section>
